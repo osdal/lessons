@@ -11,7 +11,12 @@ function start() {
 		summMonth = prompt('Ваш бюджет на месяц?');
 	}
 
-	nameShop = prompt('Название вашего магазина?').toUpperCase();
+	nameShop = prompt('Название вашего магазина?');
+	while(nameShop == '' || nameShop == null) {
+		nameShop = prompt('Название вашего магазина?');
+	}
+	nameShop = nameShop.toUpperCase();
+
 	time = 32;
 }
 start();
@@ -25,20 +30,20 @@ mainList = {
 		discount: true		
 	};
 
-function hireEmployers (employers) {
+function hireEmployers () {
 	for(let i = 1; i < 5; i++) {
 
 		
-	let a = prompt('Введите ваше имя');
-	
-	if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-		console.log('Все верно!');
-		mainList.employers[i] = a;
+		let a = prompt('Введите ваше имя');
+		
+			if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+				console.log('Все верно!');
+				mainList.employers[i] = a;
 
-	} else {
-		console.log('Вы ввели неправильное имя');
-		i--;
-	}
+			} else {
+				console.log('Вы ввели неправильное имя');
+				i--;
+		}
 	}
 
 	/*for (key in mainList.employers) {
@@ -50,59 +55,59 @@ function hireEmployers (employers) {
 
 hireEmployers();
 
-<<<<<<< HEAD
-
 
 function chooseGood () {
-	for(let i = 0; i < 5; i++) {
-=======
-/*for(let i = 0; i < 5; i++) {
->>>>>>> af6328f40e2168096840353fb516f288e6b96bc7
+		//for(let i = 0; i < 5; i++) {
 
-	let a = prompt('Какой тип товаров будем продавать?');
-	
-	if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-		console.log('Все верно!');
-		mainList.shopGoods[i] = a;
-	} else {
-		console.log('Вы ввели неправильное название товара');
-		i--;
+	/*for(let i = 0; i < 5; i++) {
+	>>>>>>> af6328f40e2168096840353fb516f288e6b96bc7
+
+		let a = prompt('Какой тип товаров будем продавать?');
+		
+		if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+			console.log('Все верно!');
+			mainList.shopGoods[i] = a;
+		} else {
+			console.log('Вы ввели неправильное название товара');
+			i--;
+		}
+		}
 	}
-	}
+	<<<<<<< HEAD
+	chooseGood ();
+
+	=======
+	*/
+	/*let i = 0;
+	while (i < 5) {
+		let a = prompt('Какой тип товаров будем продавать?');
+		
+		if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+			console.log('Все верно!');
+			mainList.shopGoods[i] = a;
+			i++;
+		} else {
+			console.log('Вы ввели неправильное название товара');
+			
+		}
+	}*/
+
+		let i = 0;
+		do {
+			let a = prompt('Какой тип товаров будем продавать?');
+			
+			if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+				console.log('Все верно!');
+				mainList.shopGoods[i] = a;
+				i++;
+			} else {
+				console.log('Вы ввели неправильное название товара');
+				
+			}
+		} while (i < 5);
+	//}
 }
-<<<<<<< HEAD
 chooseGood ();
-
-=======
-*/
-/*let i = 0;
-while (i < 5) {
-	let a = prompt('Какой тип товаров будем продавать?');
-	
-	if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-		console.log('Все верно!');
-		mainList.shopGoods[i] = a;
-		i++;
-	} else {
-		console.log('Вы ввели неправильное название товара');
-		
-	}
-}*/
-
-let i = 0;
-do {
-	let a = prompt('Какой тип товаров будем продавать?');
-	
-	if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-		console.log('Все верно!');
-		mainList.shopGoods[i] = a;
-		i++;
-	} else {
-		console.log('Вы ввели неправильное название товара');
-		
-	}
-} while (i < 5);
->>>>>>> af6328f40e2168096840353fb516f288e6b96bc7
 
 /*for(let i = 5; i > 0; i--) {
 
