@@ -1,4 +1,4 @@
-﻿let summMonth,
+﻿	let summMonth,
 	nameShop,
 	time,
 	price = 100;
@@ -100,8 +100,8 @@ mainList = {
 	
 		},
 		printItems: function printItems () {
-			mainList.shopItems.forEach (function(item, i, mainList.shopItems) {
-				console.log('У нас вы можете купить: ' + mainList.shopItems[i + 1]);
+			mainList.shopItems.forEach (function(item, i) {
+				console.log('У нас вы можете купить: ' + i + '' + item);
 			})
 		},
 
