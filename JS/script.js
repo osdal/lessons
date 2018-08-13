@@ -4,149 +4,133 @@
 	price = 100;
 
 
+
 function start() {
-	summMonth = prompt('Ваш бюджет на месяц?');
+	summMonth = prompt('Ваш бюджет на месяц?', '');
 
 	while (isNaN(summMonth) || summMonth =='' || summMonth == null) {
-		summMonth = prompt('Ваш бюджет на месяц?');
+		summMonth = prompt('Ваш бюджет на месяц?', '');
 	}
 
-	nameShop = prompt('Название вашего магазина?');
+	nameShop = prompt('Название вашего магазина?', '');
 	while(nameShop == '' || nameShop == null) {
-		nameShop = prompt('Название вашего магазина?');
+		nameShop = prompt('Название вашего магазина?', '');
 	}
 	nameShop = nameShop.toUpperCase();
 
 	time = 32;
 }
-start();
+// start();
 
 mainList = {
 		summMonth: summMonth,
 		nameShop: nameShop,
 		shopGoods: [],
 		employers: {},
-		open: true,
-		discount: true		
-	};
+		open: false,
+		discount: true,
+		shopItems: [],
+		hireEmployers: function hireEmployers () {
+			for(let i = 1; i < 5; i++) {
 
-function hireEmployers () {
-	for(let i = 1; i < 5; i++) {
-
-		
-		let a = prompt('Введите ваше имя');
-		
-			if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-				console.log('Все верно!');
-				mainList.employers[i] = a;
-
-			} else {
-				console.log('Вы ввели неправильное имя');
-				i--;
-		}
-	}
-
-	/*for (key in mainList.employers) {
-		
-		
-		console.log(key);
-	}*/
-}
-
-hireEmployers();
-
-
-function chooseGood () {
-		//for(let i = 0; i < 5; i++) {
-
-	/*for(let i = 0; i < 5; i++) {
-	>>>>>>> af6328f40e2168096840353fb516f288e6b96bc7
-
-		let a = prompt('Какой тип товаров будем продавать?');
-		
-		if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-			console.log('Все верно!');
-			mainList.shopGoods[i] = a;
-		} else {
-			console.log('Вы ввели неправильное название товара');
-			i--;
-		}
-		}
-	}
-	<<<<<<< HEAD
-	chooseGood ();
-
-	=======
-	*/
-	/*let i = 0;
-	while (i < 5) {
-		let a = prompt('Какой тип товаров будем продавать?');
-		
-		if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-			console.log('Все верно!');
-			mainList.shopGoods[i] = a;
-			i++;
-		} else {
-			console.log('Вы ввели неправильное название товара');
-			
-		}
-	}*/
-
-		let i = 0;
-		do {
-			let a = prompt('Какой тип товаров будем продавать?');
-			
-			if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-				console.log('Все верно!');
-				mainList.shopGoods[i] = a;
-				i++;
-			} else {
-				console.log('Вы ввели неправильное название товара');
 				
+				let a = prompt('Введите ваше имя', '');
+				
+					if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+						console.log('Все верно!');
+						mainList.employers[i] = a;
+
+					} else {
+						console.log('Вы ввели неправильное имя');
+						i--;
+				}
 			}
-		} while (i < 5);
-	//}
-}
-chooseGood ();
+		},
+		chooseGood:function chooseGood () {
+				let i = 0;
+				do {
+					let a = prompt('Какой тип товаров будем продавать?', '');
+					
+					if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
+						console.log('Все верно!');
+						mainList.shopGoods[i] = a;
+						i++;
+					} else {
+						console.log('Вы ввели неправильное название товара');
+						
+					}
+				} while (i < 5);
+			
+		},
+		workTime: function workTime (time) {
+				if (time < 0) {
+				console.log('Такого не может быть');
+				} else if (time > 0 && time < 20) {
+					console.log('Время работать');
+					mainList.open = true;
+				} else if (time < 24) {
+					console.log('Уже поздно');
+				} else {
+					console.log('В сутках только 24 часа');
+				}
+		},
+		dailySum: function dailySum () {
+			alert('Бюджет за 1 день = '+ mainList.summMonth/30);
+		},
+		discountPrice: function discountPrice () {
+			if (mainList.discount) {
+				console.log('Цена со скидкой ' + price*0.8);
+			} else console.log(price);
+			
+		},
+		chooseShopItems: function chooseShopItems () {
+			let items = prompt('Перечислите через звпятую ваши товары', '');
+				
+				for(let i = 0; i < 2; ++i)	{
 
-/*for(let i = 5; i > 0; i--) {
+					if ( (typeof(items))  === null || (typeof(items)) === ''){
+						--i;
+					} else {
+						mainList.shopItems = items.split(",");
+						mainList.shopItems.push(prompt('Подождите еще', ''));
+						mainList.shopItems.sort();
+					}
 
-	let a = prompt('Какой тип товаров будем продавать?');
+				}
 	
-	if ((typeof(a))  === 'string' && (typeof(a))  != null && a != '' && a.length < 50) {
-		console.log('Все верно!');
-		mainList.shopGoods[i] = a;
-	} else {
-		console.log('Вы ввели неправильное название товара');
-		i++;
-	}
-}*/
+		},
+		printItems: function printItems () {
+			mainList.shopItems.forEach (function(item, i, mainList.shopItems) {
+				console.log('У нас вы можете купить: ' + mainList.shopItems[i + 1]);
+			})
+		},
 
-function workTime (time) {
-		if (time < 0) {
-		console.log('Такого не может быть');
-		} else if (time > 0 && time < 20) {
-			console.log('Время работать');
-		} else if (time < 24) {
-			console.log('Уже поздно');
-		} else {
-			console.log('В сутках только 24 часа');
+		includeShop: function includeShop () {
+			for (key in mainList.shopItems) {
+				console.log('Наш сагазин включает в себя:' + mainList.shopItems[key])
+			}	
 		}
-}
-workTime(time);
 
-// Бюджет за 1 день
-function dailySum () {
-	alert('Бюджет за 1 день = '+ mainList.summMonth/30);
-}
-dailySum();
+};
 
-function discountPrice () {
-	if (mainList.discount) {
-		console.log('Цена со скидкой ' + price*0.8);
-	} else console.log(price);
-	
-}
-discountPrice(mainList.discount);
+
+
+
+
+// hireEmployers();
+
+
+
+// chooseGood ();
+
+
+// workTime(time);
+
+
+
+// dailySum();
+
+
+// discountPrice(mainList.discount);
 
 console.log(mainList);
