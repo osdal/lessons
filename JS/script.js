@@ -86,13 +86,15 @@ mainList = {
 		chooseShopItems: function chooseShopItems () {
 			let items = prompt('Перечислите через звпятую ваши товары', '');
 				
-				for(let i = 0; i < 2; ++i)	{
+				for(let i = 0; i < 1; i++)	{
 
-					if ( (typeof(items))  === null || (typeof(items)) === ''){
-						--i;
+					if (typeof(items) !== 'string' || typeof(items)  === null || typeof(items) === ''){
+						i--;
+						items = prompt('Еще раз перечислите через звпятую ваши товары', '');
 					} else {
 						mainList.shopItems = items.split(",");
-						mainList.shopItems.push(prompt('Подождите еще', ''));
+						let kk = prompt('Подождите еще', '');
+						mainList.shopItems.push(kk);
 						mainList.shopItems.sort();
 					}
 
@@ -101,13 +103,13 @@ mainList = {
 		},
 		printItems: function printItems () {
 			mainList.shopItems.forEach (function(item, i) {
-				console.log('У нас вы можете купить: ' + i + '' + item);
+				console.log('У нас вы можете купить: ' + (i + 1) + ' ' + item);
 			})
 		},
 
 		includeShop: function includeShop () {
-			for (key in mainList.shopItems) {
-				console.log('Наш сагазин включает в себя:' + mainList.shopItems[key])
+			for (key in mainList) {
+				console.log('Наш сагазин включает в себя:' + mainList[key]);
 			}	
 		}
 
